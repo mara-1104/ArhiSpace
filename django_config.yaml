@@ -1,0 +1,28 @@
+
+ArhiSpace:  
+
+        homepage:
+            - view_name: homepage_view
+              url_path_name: ""
+              template_name: homepage/index
+
+        about:
+            - view_name: about_view
+              url_path_name: "despre-noi"
+              template_name: about/index
+
+        team:
+            - view_name: team_view
+              url_path_name: "echipa-noastra"
+              template_name: team/index
+
+        plans:
+            - view_name: plans_view
+              url_path_name: "planuri-si-preturi"
+              template_name: plans/index
+
+        contact:
+            - view_name: contact_view
+              url_path_name: "contact"
+              template_name: contact/index
+
