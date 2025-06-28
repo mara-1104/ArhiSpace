@@ -3,5 +3,5 @@ from .views import about_view
 
 urlpatterns = [
 
-	path("despre-noi", about_view),
+	path("", about_view),
 ]

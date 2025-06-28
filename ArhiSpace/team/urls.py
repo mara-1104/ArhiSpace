@@ -3,5 +3,5 @@ from .views import team_view
 
 urlpatterns = [
 
-	path("echipa-noastra", team_view),
+	path("", team_view),
 ]

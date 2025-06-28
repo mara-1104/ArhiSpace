@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  <style>
+
+    header.navbar {
+      background-color: black;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ddd;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .navbar nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .navbar nav a:hover {
+      color:rgb(255, 102, 0);
+    }
+
+    @media (max-width: 768px) {
+      .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar nav a {
+        margin: 0.5rem 0;
+      }
+    }
+</style>
+
+</head>
+
+
+<body>
+    <header class="navbar">
+  <div class="container">
+    <a href="/" class="logo">🏡 Arhispace</a>
+    <nav>
+      <a href="">Acasă</a>
+      <a href="/despre-noi/">Despre</a>
+      <a href="/echipa-noastra/">Echipa</a>
+      <a href="/planuri-si-preturi/">Planuri</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+</body>
+</html>
