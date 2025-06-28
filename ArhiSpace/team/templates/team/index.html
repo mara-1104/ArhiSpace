@@ -1,10 +1,68 @@
-{% extends "partials/header.html" %}
+{% include "partials/header.html" %}
 
-    {% block title %}
-        TEAM
-    {% endblock title %}
+{% load static %}
+
+<head>
+    <style>
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: x-large;
+            color: rgb(255, 94, 0);
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            max-height: 400px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .about-image {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
 
     {% block main %}
 
+        <div class="about-container">
+
+            <div class="about-text">
+                <p>Echipa de specialiști în arhitectură și design personalizează fiecare proiect, adaptându-se nevoilor clienților din domeniul rezidențial, comercial și industrial. Prin implementarea unor metode eficiente, firma ajută la economisirea timpului și resurselor, reducând riscul modificărilor costisitoare în fazele finale de construcție.</p>
+            </div>
+
+            <div class="about-image">
+                <img src="{% static 'images/echipa.webp' %}" alt="Echipa Arhispace">
+            </div>
+
+            
+        </div>
+
     {% endblock main %}
 
+
+{% include "partials/footer.html" %}

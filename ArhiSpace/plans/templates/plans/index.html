@@ -1,10 +1,30 @@
-{% extends "partials/header.html" %}
+{% include "partials/header.html" %}
 
-    {% block title %}
-        PLANS
-    {% endblock title %}
+{% load static %}
+
+<head>
+    <style>
+        .full-screen-image {
+            width: 100%;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .full-screen-image img {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
 
     {% block main %}
 
+        <div class="full-screen-image">
+            <img src="{% static 'images/planuri.webp' %}" alt="Preturi">
+        </div>
+
     {% endblock main %}
 
+{% include "partials/footer.html" %}

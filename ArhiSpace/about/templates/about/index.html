@@ -1,10 +1,65 @@
-{% extends "partials/header.html" %}
+{% include "partials/header.html" %}
 
-    {% block title %}
-        ABOUT US
-    {% endblock title %}
+{% load static %}
+
+<head>
+    <style>
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: x-large;
+            color: rgb(255, 94, 0);
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            max-height: 400px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .about-image {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
 
     {% block main %}
 
+        <div class="about-container">
+            <div class="about-image">
+                <img src="{% static 'images/despre.webp' %}" alt="Echipa Arhispace">
+            </div>
+
+            <div class="about-text">
+                <p>Arhispace este o firmă inovatoare în domeniul arhitecturii, care utilizează tehnologii moderne precum simularea VR și realizarea planurilor la scară 1:1. Aceste soluții permit clienților să vizualizeze proiectele într-un mod interactiv, oferind o experiență unică și realistă.</p>
+            </div>
+        </div>
+
     {% endblock main %}
 
+
+{% include "partials/footer.html" %}
