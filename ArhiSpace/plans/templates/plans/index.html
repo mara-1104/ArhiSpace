@@ -22,7 +22,10 @@
     {% block main %}
 
         <div class="full-screen-image">
-            <img src="{% static 'images/planuri.webp' %}" alt="Preturi">
+            <picture>
+                <source media="(max-width: 768px)" srcset="{% static 'images/preturi-mobile.webp' %}">
+                <img src="{% static 'images/preturi.webp' %}" alt="Preturi">
+            </picture>
         </div>
 
     {% endblock main %}

@@ -1,52 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abonare Newsletter Arhispace</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            padding: 40px; 
-        }
+{% include "partials/header.html" %}
 
-        form { 
-            max-width: 400px; 
-            margin: auto; 
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        input[type="email"] {
-            width: 100%; 
-            padding: 10px; 
-            margin-bottom: 10px; 
-            font-size: 1em;
-            border: 1px solid #ccc; 
-            border-radius: 4px;
-        }
+    html, body {
+        height: 100%;
+    }
 
-        button {
-            padding: 10px 20px; 
-            font-size: 1em; 
-            background: #2e8b57; 
-            color: white;
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer;
-        }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
 
-        .message {
-            margin: 20px auto; 
-            max-width: 400px; 
-            font-weight: bold;
-            color: #2e8b57;
-            text-align: center;
-        }
-    </style>
-</head>
+    main {
+        flex: 1;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-<body>
+    .text {
+        font-weight: bold;
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
 
-    <h2>Abonează-te la newsletter-ul Arhispace</h2>
+    form {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        background: rgb(255, 102, 0);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .message {
+        margin-top: 20px;
+        font-weight: bold;
+        color: rgb(255, 102, 0);
+        text-align: center;
+    }
+</style>
+
+<main>
+    <div class="text">
+        Abonează-te la newsletter-ul Arhispace
+    </div>
 
     <form method="post" action="">
         {% csrf_token %}
@@ -57,6 +80,6 @@
     {% if message %}
         <div class="message">{{ message }}</div>
     {% endif %}
+</main>
 
-</body>
-</html>
+{% include "partials/footer.html" %}
