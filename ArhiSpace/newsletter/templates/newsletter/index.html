@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonare Newsletter Arhispace</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 40px; 
+        }
+
+        form { 
+            max-width: 400px; 
+            margin: auto; 
+        }
+
+        input[type="email"] {
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            font-size: 1em;
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px; 
+            font-size: 1em; 
+            background: #2e8b57; 
+            color: white;
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer;
+        }
+
+        .message {
+            margin: 20px auto; 
+            max-width: 400px; 
+            font-weight: bold;
+            color: #2e8b57;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Abonează-te la newsletter-ul Arhispace</h2>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Introdu adresa ta de email" required />
+        <button type="submit">Abonează-te</button>
+    </form>
+
+    {% if message %}
+        <div class="message">{{ message }}</div>
+    {% endif %}
+
+</body>
+</html>

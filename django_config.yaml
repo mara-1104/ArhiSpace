@@ -25,4 +25,8 @@ ArhiSpace:
             - view_name: contact_view
               url_path_name: "contact"
               template_name: contact/index
-
+        
+        newsletter:
+            - view_name: newsletter_view
+              url_path_name: "newsletter"
+              template_name: newsletter/index

@@ -24,4 +24,5 @@ urlpatterns = [
 	path('echipa-noastra/', include('team.urls')),
 	path('planuri-si-preturi/', include('plans.urls')),
 	path('contact/', include('contact.urls')),
+	path('newsletter/', include('newsletter.urls')),
 ]
