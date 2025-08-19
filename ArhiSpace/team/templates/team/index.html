@@ -4,111 +4,149 @@
 
 <head>
 <style>
-.team-section{
-    display: flex;
-    gap: 20px;
-        }
-
-{% comment %} .team-section {
-    display : flex;
-    gap: 48px;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 48px 0;
-    background: #faf7f2; {% endcomment %}
-    {% comment %} max-width: 1200px; {% endcomment %}
-    {% comment %} margin-left: auto; {% endcomment %}
-    {% comment %} margin-right: auto; {% endcomment %}
+/* Intro Section (Titlu + Subtitlu) */
+.team-intro {
+    text-align: center;
+    margin: 60px auto 40px auto;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeUp 1s ease-in-out;
 }
 
+.team-intro h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.team-intro p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.team-intro .line {
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff9966, #ff5e62);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+/* Echipa - Section Layout */
+.team-section {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #fafafa, #fefbf7);
+    border-radius: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Lista Membri */
 .team-list {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    {% comment %} flex: 1; {% endcomment %}
-    flex:0 0 60%
+    gap: 28px;
+    flex: 0 0 55%;
 }
 
+/* Card Membru */
 .team-member-container {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    padding: 20px 28px;
-    transition: box-shadow 0.2s;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    padding: 22px 28px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 .team-member-container:hover {
-    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
 }
 
+/* Poza Membru */
 .team-member-photo img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #ffe5cc;
+    border: 3px solid #ffd9b3;
     background: #fff;
+    transition: all 0.3s ease;
+}
+.team-member-container:hover .team-member-photo img {
+    border-color: #ffb366;
+    box-shadow: 0 0 12px rgba(255,179,102,0.6);
 }
 
+/* Detalii Membru */
 .team-member-details h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.5rem;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
     color: #222;
 }
 .team-member-details p {
-    margin: 0;
-    color: #888;
-    font-size: 1.15rem;
+    margin: 4px 0 0 0;
+    color: #666;
+    font-size: 1.1rem;
+    font-style: italic;
 }
 
- .about-text {
-    display : center;
-    flex: 900px;
-    {% comment %} background: #ffe5cc; {% endcomment %}
+/* Descriere Echipa */
+.about-text {
+    flex: 0 0 45%;
     padding: 28px 24px;
-    {% comment %} border-radius: 12px; {% endcomment %}
-    font-size: 1.75rem;
-    {% comment %} color: #444; {% endcomment %}
-    max-width: 1000px;
-    margin-top: 0;
-    align-self: center;
-    {% comment %} box-shadow: 0 2px 12px rgba(0,0,0,0.07); {% endcomment %}
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #444;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    align-self: flex-start;
 }
 
-{% comment %} .about-text{
-    background-color:transparent;
-    padding:0;
-    box-shadow:none;
-    border:none;
-    flex:0 0 40%
-} {% endcomment %}
-
+/* Responsive */
 @media (max-width: 900px) {
     .team-section {
         flex-direction: column;
-        padding: 24px 0;
+        padding: 30px 16px;
     }
     .about-text {
-        max-width: 100%;
         margin-top: 24px;
+        font-size: 1.2rem;
     }
     .team-member-container {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 16px 12px;
-    }
-    .team-member-photo img {
-        width: 64px;
-        height: 64px;
+        align-items: center;
+        text-align: center;
     }
 }
+
+/* Animatie pentru Titlu */
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
 </style>
 </head>
 
 
 {% block main %}
+    <section class="team-intro">
+        <h2>Echipa noastră</h2>
+        <p>Specialiști dedicați care transformă ideile în proiecte de succes</p>
+        <div class="line"></div>
+    </section>
     <div class="team-section">
         <div class="team-list">
             {% for member in team_members %}

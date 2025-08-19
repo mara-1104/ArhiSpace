@@ -1,0 +1,73 @@
+{% include "partials/header.html" %}
+{% load static %}
+
+<div class="container py-5">
+    <div class="card p-4">
+        {% if success %}
+            <p class="thank-you text-center">Multumim pentru interesul acordat! Echipa noastra va va contacta in termen de maxim 3 zile pentru a stabili o intalnire.</p>
+        {% else %}
+            {% if plan %}
+                <div class="selected-plan text-center mb-4">Plan selectat: <strong>{{ plan }}</strong></div>
+            {% endif %}
+            
+            {% if error %}
+                <div class="error-message text-center mb-3">{{ error }}</div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                {% if plan %}
+                    <input type="hidden" name="plan" value="{{ plan }}">
+                {% endif %}
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="ex: exemplu@mail.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Telefon:</label>
+                    <input type="text" id="phone" name="phone" class="form-control" placeholder="ex: 07xx xxx xxx" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Trimite</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+    }
+    .card {
+        max-width: 600px;
+        margin: auto;
+        border-radius: 15px;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+        background-color: #fff;
+        padding: 30px;
+    }
+    .btn-primary {
+        background-color: #ffb366;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+    }
+    .btn-primary:hover {
+        background-color: #ffa64d;
+    }
+    .thank-you {
+        font-size: 18px;
+        color: #333;
+    }
+    .selected-plan {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .error-message {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+{% include "partials/footer.html" %}

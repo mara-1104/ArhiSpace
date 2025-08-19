@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import plans_view
+from .views import estimare_view
 
 urlpatterns = [
 
-	path("", plans_view),
+	path("", estimare_view),
+
 ]
+

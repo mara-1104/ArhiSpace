@@ -25,4 +25,5 @@ urlpatterns = [
 	path('planuri-si-preturi/', include('plans.urls')),
 	path('contact/', include('contact.urls')),
 	path('newsletter/', include('newsletter.urls')),
+	path('bag/', include('bag.urls')),
 ]
