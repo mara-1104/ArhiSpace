@@ -45,7 +45,7 @@ def estimare_view(request):
                     plan=plan
                 )
             else:
-                error = plan  # în cazul erorii, `plan` conține mesajul
+                error = plan
     else:
         form = EstimarePretForm()
     

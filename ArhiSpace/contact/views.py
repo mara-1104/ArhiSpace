@@ -12,7 +12,6 @@ def contact_view(request):
         email = request.POST['email']
         message = request.POST['message']
 
-        # Salvează în baza de date
         ContactMessage.objects.create(name=name, email=email, message=message)
 
         full_message = f"Mesaj de la {name} ({email}):\n\n{message}"
