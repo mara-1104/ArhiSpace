@@ -1,35 +1,57 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from .models import BagEntry
 
+
 def bag_view(request):
+    context = {}
+
+    if request.GET.get("clear_bag"):
+        request.session.pop("selected_plan", None)
+
     if request.method == "POST":
-        if "plan" in request.POST and "email" not in request.POST:
-            # Step 1: User selected a plan
-            plan = request.POST.get("plan")
+        plan = request.POST.get("plan") or request.session.get("selected_plan")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+
+        if plan and not email and not phone:
             request.session["selected_plan"] = plan
-            return render(request, "bag/index.html", {"plan": plan})
-        else:
-            # Step 2: User submits email & phone
-            email = request.POST.get("email")
-            phone = request.POST.get("phone")
-            plan = request.session.get("selected_plan")
+            context["plan"] = plan
+            return render(request, "bag/index.html", context)
+        
+        if email and phone:
+            context["plan"] = plan
+            context["email"] = email
+            context["phone"] = phone
 
-            if plan and email and phone:
-                # Save data to DB
-                BagEntry.objects.create(plan=plan, email=email, phone=phone)
+            if not plan:
+                context["error"] = "Selectați un plan înainte de a trimite formularul."
+                return render(request, "bag/index.html", context)
 
-                # Clear session
-                request.session.pop("selected_plan", None)
+            try:
+                validate_email(email)
+            except ValidationError:
+                context["error"] = "Email invalid."
+                return render(request, "bag/index.html", context)
 
-                # Redirect to homepage after submission
-                return redirect("/")  # Homepage
+            if len(phone.replace(" ", "")) < 9:
+                context["error"] = "Număr de telefon invalid."
+                return render(request, "bag/index.html", context)
 
-            else:
-                # Missing data
-                return render(request, "bag/index.html", {
-                    "plan": plan,
-                    "error": "Completați toate câmpurile."
-                })
+            BagEntry.objects.create(plan=plan, email=email, phone=phone)
+
+            request.session.pop("selected_plan", None)
+            context.clear()
+            context["success"] = True
+            return render(request, "bag/index.html", context)
+
+        context["error"] = "Completați toate câmpurile."
+        context["plan"] = plan
+        context["email"] = email
+        context["phone"] = phone
+        return render(request, "bag/index.html", context)
+
     else:
-        # Prevent direct access
-        return redirect("/")
+        context["plan"] = request.session.get("selected_plan")
+        return render(request, "bag/index.html", context)

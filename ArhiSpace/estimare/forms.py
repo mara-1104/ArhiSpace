@@ -7,6 +7,7 @@ class EstimarePretForm(forms.Form):
         max_value=372,
         widget=forms.NumberInput(attrs={
             "class": "form-control",
-            "placeholder": "Introdu suprafața în m²"
+            "placeholder": "Introdu suprafața în m²",
+            "step": "0.01"
         })
     )

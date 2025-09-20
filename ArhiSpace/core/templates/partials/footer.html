@@ -6,35 +6,47 @@
     <title>Document</title>
 
     <style>
-  footer.site-footer {
-    background-color: #111;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 0.9rem;
-    border-top: 1px solid #333;
-  }
+        html, body {
+            height: 100%;
+            margin: 0;  
+            display: flex;
+            flex-direction: column; 
+        }
 
-  footer.site-footer a {
-    color: #ff6600;
-    text-decoration: none;
-    font-weight: bold;
-  }
+        main {
+            flex: 1; 
+        }
 
-  footer.site-footer a:hover {
-    color: #ffaa33;
-  }
-</style>
+        footer.site-footer {
+            background-color: #111;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            border-top: 1px solid #333;
+        }
 
+        footer.site-footer a {
+            color: #ff9933;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
+        footer.site-footer a:hover {
+            color: #ffb366;
+        }
+    </style>
 </head>
 <body>
+
+    <main></main>
+
     <footer class="site-footer">
-  <div class="container">
-    &copy; {{ current_year }} Arhispace. Toate drepturile rezervate. | 
-    <a href="/contact/">Contact</a>
-  </div>
-</footer>
+        <div class="container">
+            {{ current_year }} Arhispace. Toate drepturile rezervate. | 
+            <a href="/contact/">Contact</a>
+        </div>
+    </footer>
 </body>
 </html>

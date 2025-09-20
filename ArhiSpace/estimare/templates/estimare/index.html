@@ -1,0 +1,183 @@
+{% include "partials/header.html" %}
+{% load static %}
+
+<main>
+    <div class="hero py-5 mb-5 text-center">
+        <div class="container">
+            <h1 class="hero-title">Estimator Preț Proiect</h1>
+            <p class="hero-subtitle">Calculează rapid costul proiectului și obține o estimare orientativă</p>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="calc-box">
+                    <h4 class="mb-4">Calculator</h4>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label class="form-label">Suprafață (m²)</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="suprafata" name="suprafata" required min="1" max="372" aria-label="Suprafață în metri pătrați">
+                                <button type="submit" class="btn-main">Calculează</button>
+                            </div>
+                            <small class="text-muted">Introduceți suprafața totală a proiectului</small>
+                        </div>
+                    </form>
+
+                    {% if rezultat %}
+                        <div class="result">
+                            <div class="icon">📊</div>
+                            <h5>Cost estimat</h5>
+                            <div class="price">{{ rezultat }} €</div>
+                            <small>(TVA inclus)</small>
+                            
+                            <div class="recommended-plan mt-3">
+                                <p>Plan recomandat: <strong>{{ plan }}</strong></p>
+                                
+                                <form method="post" action="{% url 'bag' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="plan" value="{{ plan }}">
+                                    <button type="submit" class="btn-outline">Adaugă în coș</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    body {
+        background-color: #fdfdfd;
+        font-family: 'Segoe UI', sans-serif;
+        line-height: 1.7;
+    }
+
+    .hero {
+        background: none;
+        text-align: center;
+    }
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #222;
+    }
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #555;
+        margin-top: 0.5rem;
+    }
+
+    .calc-box {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.06);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .input-group .form-control {
+        flex: 1 1 100px;
+        min-width: 0;
+        max-width: 120px;
+    }
+    .input-group .btn-main {
+        width: auto;
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .btn-main {
+        display: block;
+        width: 100%;
+        background: #ffb366;
+        border: none;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        transition: background 0.2s;
+    }
+    .btn-main:hover {
+        background: #ff9933;
+    }
+    .btn-main:active {
+        transform: scale(0.98);
+    }
+
+    .result {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        background: #fafafa;
+    }
+    .result .icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+    }
+    .result .price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ff9933;
+    }
+    .result .tag {
+        background: #ffb366;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+    }
+
+    .recommended-plan {
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    .recommended-plan .btn-outline {
+        border: 2px solid #ffb366;
+        background: transparent;
+        color: #ff9933;
+        font-weight: 600;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+    }
+
+    .recommended-plan .btn-outline:hover {
+        background: #ffb366;
+        color: #fff;
+    }
+
+    @media (max-width: 900px) {
+        .calc-box {
+            padding: 1rem;
+            max-width: 100%;
+        }
+        .input-group {
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+        .input-group .form-control,
+        .input-group .btn-main {
+            width: 100%;
+            max-width: 100%;
+            margin-left: 0;
+        }
+    }
+</style>
+
+{% include "partials/footer.html" %}

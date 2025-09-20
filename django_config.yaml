@@ -35,3 +35,8 @@ ArhiSpace:
             - view_name: bag_view
               url_path_name: "bag"
               template_name: bag/index
+
+        estimare:
+            - view_name: estimare_view
+              url_path_name: "estimare-pret"
+              template_name: estimare/index

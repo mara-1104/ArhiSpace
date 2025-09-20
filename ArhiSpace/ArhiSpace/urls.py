@@ -26,4 +26,5 @@ urlpatterns = [
 	path('contact/', include('contact.urls')),
 	path('newsletter/', include('newsletter.urls')),
 	path('bag/', include('bag.urls')),
+	path('estimare/', include('estimare.urls')),
 ]

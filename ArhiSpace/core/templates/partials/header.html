@@ -52,14 +52,37 @@
     }
 
     .navbar nav a:hover {
-      color:rgb(255, 102, 0);
+      color: #ffb366;
     }
 
     .navbar .logo:hover {
-      color:rgb(255, 102, 0);
+      color: #ff9933;
     }
 
-    @media (max-width: 768px) {
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: 1rem;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      background: #ff9933;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
       .navbar .container {
         flex-direction: column;
         align-items: flex-start;
@@ -67,6 +90,27 @@
 
       .navbar nav a {
         margin: 0.5rem 0;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: black;
+        flex-direction: column;
+        width: 200px;
+        padding: 1rem;
+        gap: 1rem;
+        display: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 100;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
       }
     }
 </style>
@@ -78,14 +122,20 @@
   <header class="navbar">
     <div class="container">
       <a href="/" class="logo"> Arhispace</a>
-      <nav>
+      <button class="hamburger" aria-label="Deschide meniul" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+      <nav class="nav-links">
         <a href="/">Acasă</a>
         <a href="/despre-noi/">Despre</a>
         <a href="/echipa-noastra/">Echipa</a>
         <a href="/planuri-si-preturi/">Planuri</a>
+        <a href="/estimare/">Estimare Preț</a>
         <a href="/contact/">Contact</a>
-        <a href="/newsletter/"> Newsletter</a>
-        <a href="/bag/">Cos</a>
+        <a href="/newsletter/"> Abonează-te</a>
+        <a href="/bag/">Coș</a>
       </nav>
     </div>
   </header>

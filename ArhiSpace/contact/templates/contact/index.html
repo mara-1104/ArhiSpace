@@ -64,7 +64,7 @@
 
         .contact-form button {
             padding: 12px;
-            background-color: #333;
+            background-color: #ff9933;
             color: #fff;
             border: none;
             border-radius: 6px;
@@ -72,32 +72,24 @@
             transition: background 0.3s;
         }
 
+        .contact-form button:active {
+            transform: scale(0.98);
+        }
+
         .contact-form button:hover {
-            background-color: #555;
+            background-color: #ffb366;
         }
 
-        .contact-map {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
-        .contact-container {
-            flex-direction: column;
-            text-align: center;
-        }
-        
-        .contact-details,
-        .contact-map {
-            min-width: 100%;
-        }
-        
-        .contact-details {
-            text-align: center;
-        }
+        @media (max-width: 600px) {
+            .contact-form button {
+                background-color: #ff9933;
+                font-size: 1.1rem;
+                padding: 16px 0;
+                width: 100%;
+            }
+            .contact-form button:hover {
+                background-color: #ffb366;
+            }
         }
     </style>
 </head>
@@ -110,6 +102,11 @@
     <div class="contact-container">
 
       <div class="contact-details">
+        {% if success %}
+            <div style="background:#ff9933;color:#fff;padding:12px;border-radius:6px;margin-bottom:16px;">
+                Mesajul a fost trimis cu succes! Vă vom contacta în curând.
+            </div>
+        {% endif %}
         <form method="post" class="contact-form">
           {% csrf_token %}
           <label for="name">Nume:</label>
