@@ -7,10 +7,13 @@ from .models import BagEntry
 def bag_view(request):
     context = {}
 
+    # cos gol
     if request.GET.get("clear_bag"):
         request.session.pop("selected_plan", None)
 
+
     if request.method == "POST":
+        # formular
         plan = request.POST.get("plan") or request.session.get("selected_plan")
         email = request.POST.get("email")
         phone = request.POST.get("phone")

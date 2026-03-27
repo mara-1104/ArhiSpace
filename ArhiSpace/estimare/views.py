@@ -25,7 +25,7 @@ def estimeaza_pret(suprafata, include_tva=True):
         
         return round(cost_total, 2), plan
     except Exception as e:
-        return None, str(e)
+        return None, str(e)  #mesaj eroare ca sir
 
 def estimare_view(request):
     rezultat = None
